@@ -1,0 +1,54 @@
+﻿@model SignInViewModel
+@{
+    ViewData["Title"] = "Sign In";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<form asp-action="SignIn" method="post" class="space-y-5">
+    <div asp-validation-summary="ModelOnly" class="text-red-600 text-sm"></div>
+
+    <!-- Email Field -->
+    <div>
+        <label asp-for="Email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+        <input asp-for="Email" placeholder="Enter email address"
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" required />
+        <span asp-validation-for="Email" class="text-red-500 text-xs mt-1 block"></span>
+    </div>
+
+    <!-- Password Field -->
+    <div>
+        <label asp-for="Password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <input asp-for="Password" type="password" placeholder="Enter Password"
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" required />
+        <span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
+    </div>
+
+    <!-- Remember Me -->
+    <div class="flex items-center">
+        <input asp-for="RememberMe" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" />
+        <label asp-for="RememberMe" class="ml-2 block text-sm text-gray-700">
+            Remember Me
+        </label>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="w-full py-3 px-4 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg shadow transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+        Sign In
+    </button>
+
+    <!-- Links -->
+    <div class="text-center text-sm text-gray-600 space-y-2">
+        <p>
+            Don't have an account?
+            <a asp-action="SignUp" class="text-primary font-medium hover:underline">Sign Up</a>
+        </p>
+        <p>
+            Forgot Password?
+            <a asp-action="ForgetPassword" class="text-primary font-medium hover:underline">Reset Your Password</a>
+        </p>
+    </div>
+</form>
+
+@section validationScripts {
+    <partial name="_ValidationScriptsPartial" />
+}

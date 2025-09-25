@@ -1,8 +1,95 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
+            Welcome to <span class="text-yellow-300">EmployeeDepartmentMVC</span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Manage your teams, track departments, and streamline your organization with ease.
+        </p>
+        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <a href="@Url.Action("Index", "Employee")"
+               class="px-6 py-2.5 sm:px-8 sm:py-3 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+                View All Employees
+            </a>
+            <a href="@Url.Action("Index", "Department")"
+               class="px-6 py-2.5 sm:px-8 sm:py-3 bg-white hover:bg-gray-100 text-blue-700 font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+                View All Departments
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Main Dashboard Sections -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- استخدام grid-cols-1 على كل الشاشات الصغيرة، و grid-cols-2 فقط على الشاشات الكبيرة جداً (lg) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+
+        <!-- Employees Section -->
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.01] transition-all duration-300">
+            <div class="bg-gradient-to-r from-green-500 to-emerald-600 p-4 sm:p-6 text-white">
+                <h2 class="text-xl sm:text-2xl font-bold flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    Our Employees
+                </h2>
+            </div>
+            <div class="p-4 sm:p-6">
+                <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+                    Meet the talented individuals driving our success. Click below to explore their profiles.
+                </p>
+                <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                    <!-- ضبط ارتفاع الصور على الشاشات الصغيرة -->
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Employee 1" class="w-full h-24 sm:h-32 object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Employee 2" class="w-full h-24 sm:h-32 object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Employee 3" class="w-full h-24 sm:h-32 object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Employee 4" class="w-full h-24 sm:h-32 object-cover">
+                    </div>
+                </div>
+                <a href="@Url.Action("Index", "Employee")"
+                   class="w-full block text-center py-2.5 sm:py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow transition-colors duration-300 text-sm sm:text-base">
+                    Explore All Employees
+                </a>
+            </div>
+        </div>
+
+        <!-- Departments Section -->
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.01] transition-all duration-300">
+            <div class="bg-gradient-to-r from-purple-500 to-pink-600 p-4 sm:p-6 text-white">
+                <h2 class="text-xl sm:text-2xl font-bold flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    Our Departments
+                </h2>
+            </div>
+            <div class="p-4 sm:p-6">
+                <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+                    Discover the different teams that make up our organization. Each department plays a vital role.
+                </p>
+                <div class="mb-6 sm:mb-8">
+                    <!-- ضبط ارتفاع الصورة -->
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                         alt="Department Team"
+                         class="w-full h-48 md:h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                </div>
+                <a href="@Url.Action("Index", "Department")"
+                   class="w-full block text-center py-2.5 sm:py-3 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-lg shadow transition-colors duration-300 text-sm sm:text-base">
+                    Explore All Departments
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
